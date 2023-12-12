@@ -9,6 +9,7 @@
 #include "Shader_Loading.h"
 #include "Shape.h"
 #include "Window_Setting.h"
+#include "Window_Setting.h"
 #include "Physics_Engine.h"
 #include "pch.h"
 
@@ -64,10 +65,10 @@ int main(void)
 
 	Polygon b1(200, 35.355339, 50, 360);
 	b1.change_color(1, 1, 0, 1);
-	b1.init_velocity(-4, 0);
+	b1.init_velocity(-0.5, 0);
 
 	Polygon b2(-100, -35.355339, 50, 360);
-	b2.init_velocity(4, 0);
+	b2.init_velocity(0.5, 0);
 
 	physics_engine.new_object(b1);
 	physics_engine.new_object(b2);
