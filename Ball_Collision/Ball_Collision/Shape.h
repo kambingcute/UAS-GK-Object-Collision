@@ -8,7 +8,7 @@
 #include <vector>
 #include "Window_Setting.h"
 
-#define PI 3.14159265
+#define M_PI 3.14159265
 
 class Base_Object {
 public:
