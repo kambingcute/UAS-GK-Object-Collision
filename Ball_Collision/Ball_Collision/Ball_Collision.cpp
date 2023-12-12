@@ -4,19 +4,13 @@
 // GL_test.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 /* Libraries */
-#include "pch.h"
-#include <iostream>
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
-#include <cmath>
-#include <vector>
-#include <ctime>
 
 /* Header Files */
 #include "Shader_Loading.h"
 #include "Shape.h"
 #include "Window_Setting.h"
 #include "Physics_Engine.h"
+#include "pch.h"
 
 /* Function Declaration */
 static unsigned int CompileShader(unsigned int type, const std::string& source);

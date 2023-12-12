@@ -74,7 +74,8 @@
     <IncludePath>D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Dependencies\GLFW\include;D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Dependencies\GLEW\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Dependencies\GLFW\include;D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Dependencies\GLEW\include;$(IncludePath)</IncludePath>
+    <IncludePath>D:\kuliah\sem5\Grafika Komputer\UAS-GK-Object-Collision\Ball_Collision\Dependencies\GLEW\include;D:\kuliah\sem5\Grafika Komputer\UAS-GK-Object-Collision\Ball_Collision\Dependencies\GLFW\include;$(IncludePath)</IncludePath>
+    <LibraryPath>D:\kuliah\sem5\Grafika Komputer\UAS-GK-Object-Collision\Ball_Collision\Dependencies\GLFW\lib;D:\kuliah\sem5\Grafika Komputer\UAS-GK-Object-Collision\Ball_Collision\Dependencies\GLEW\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -116,7 +117,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
