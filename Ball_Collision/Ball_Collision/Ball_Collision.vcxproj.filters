@@ -20,9 +20,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Ball_Collision.pch">
-      <Filter>Source Files</Filter>
-    </None>
     <None Include="Basic.shader">
       <Filter>Source Files</Filter>
     </None>

@@ -4,7 +4,7 @@
 // GL_test.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 /* Libraries */
-// #include "pch.h"
+#include "pch.h"
 #include <iostream>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
