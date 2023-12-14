@@ -171,12 +171,6 @@ public:
 		edge_collided_x();
 		edge_collided_y();
 
-		//if (abs(vx) < 0.00001) vx = 0;
-		//if (abs(vy) < 0.00001) vy = 0;
-		//if (vx > 0) vx -= 0.000001;
-		//if (vx < 0) vx += 0.000001;
-		//if (vy > 0) vy -= 0.000001;
-		//if (vy < 0) vy += 0.000001;
 	}
 
 	float get_velocity_angle() { return atan(vy / vx)* 180.0 / M_PI; };
@@ -229,7 +223,128 @@ public:
 		set_data(data_buffer, number_of_vertices, GL_TRIANGLE_FAN);
 	}
 
-	// Fungsi lainnya sesuai kebutuhan Anda, misalnya untuk mengubah warna atau menggerakkan segitiga.
+	void move_norm(float dx, float dy) {
+		for (int i = 0; i < buffer_size; i += 6) {
+			data_buffer[i] += dx;
+			data_buffer[i + 1] += dy;
+		}
+
+		// Perhitungan ulang pusat segitiga
+		float sum_x = 0.0, sum_y = 0.0;
+		for (int i = 0; i < buffer_size; i += 6) {
+			sum_x += data_buffer[i];
+			sum_y += data_buffer[i + 1];
+		}
+		center_x = sum_x / (buffer_size / 6);
+		center_y = sum_y / (buffer_size / 6);
+	}
+
+	void init_velocity(float vx, float vy) {
+		this->vx = vx / HALF_WIDTH;
+		this->vy = vy / HALF_HEIGHT;
+		this->speed = sqrt(this->vx * this->vx + this->vy * this->vy);
+	}
+
+	bool edge_collided_x() {
+		bool if_edge_collided = false;
+
+		// Perhitungan batas x
+		float minX = INFINITY, maxX = -INFINITY;
+		for (int i = 0; i < buffer_size; i += 6) {
+			float x = data_buffer[i];
+			minX = std::min(minX, x);
+			maxX = std::max(maxX, x);
+		}
+
+		// Deteksi tabrakan dengan tepi x
+		if (minX <= -1 || maxX >= 1) {
+			if_edge_collided = true;
+
+			// Penyesuaian posisi jika terjadi tabrakan
+			for (int i = 0; i < buffer_size; i += 6) {
+				data_buffer[i] -= (minX <= -1) ? minX + 0.01 : maxX - 0.01;
+			}
+
+			// Memantulkan kecepatan
+			vx = -vx;
+		}
+
+		return if_edge_collided;
+	}
+
+	bool edge_collided_y() {
+		bool if_edge_collided = false;
+
+		float minY = INFINITY, maxY = -INFINITY;
+		for (int i = 0; i < buffer_size; i += 6) {
+			float y = data_buffer[i + 1];
+			minY = std::min(minY, y);
+			maxY = std::max(maxY, y);
+		}
+
+		if (minY <= -1) {
+			if_edge_collided = true;
+
+			// Adjust positions
+			for (int i = 0; i < buffer_size; i += 6) {
+				data_buffer[i + 1] += 1.01;
+			}
+
+			// Bounce velocity
+			vy = -vy;
+		}
+		else if (maxY >= 1) {
+			if_edge_collided = true;
+
+			// Adjust positions
+			for (int i = 0; i < buffer_size; i += 6) {
+				data_buffer[i + 1] -= 1.01;
+			}
+
+			// Bounce velocity
+			vy = -vy;
+		}
+
+		return if_edge_collided;
+	}
+
+	void set_position_norm(float x, float y) {
+		x *= HALF_WIDTH;
+		y *= HALF_HEIGHT;
+
+		float doublePI = M_PI * 2;
+		int number_of_side = number_of_vertices - 2;
+
+		for (int i = 0; i < buffer_size; i += 6) {
+			data_buffer[i] = (x + side_length * cos((i / 6) * (doublePI / number_of_side))) / HALF_WIDTH;
+			data_buffer[i + 1] = (y + side_length * sin((i / 6) * (doublePI / number_of_side))) / HALF_HEIGHT;
+		}
+
+		center_x = data_buffer[0];
+		center_y = data_buffer[1];
+	}
+
+	void set_acclr_norm(float x) {
+		acclr = x;
+	}
+
+	void update_position() {
+		for (int i = 0; i < buffer_size; i += 6) {
+			data_buffer[i] += vx;
+			data_buffer[i + 1] += vy;
+		}
+
+		edge_collided_x();
+		edge_collided_y();
+	}
+
+	float get_velocity_angle() { return atan(vy / vx) * 180.0 / M_PI; };
+	float get_center_x() { return center_x; }
+	float get_center_y() { return center_y; }
+	float get_side_length() { return side_length; }
+	float get_vx() { return vx; }
+	float get_vy() { return vy; }
+	float get_speed() { return speed; }
 
 	~Triangle() { delete[] data_buffer; }
 
@@ -239,6 +354,13 @@ private:
 
 	float* data_buffer;
 	int buffer_size;
+
+	float center_x = 0;
+	float center_y = 0;
+	float vx = 0;
+	float vy = 0;
+	float speed = 0;
+	float acclr = 0;
 };
 
 class Square : public Base_Object {
@@ -252,8 +374,6 @@ public:
 		height /= float(WINDOW_HEIGHT / 2);
 		this->center_x = center_x;
 		this->center_y = center_y;
-		this->width = width;
-		this->height = height;
 
 		rotate_degree = degree;
 
@@ -261,46 +381,20 @@ public:
 		float offsetx = width / 2;
 
 		float temp_buffer[24] = {
-			center_x - offsetx, center_y - offsety, 1, 0, 0, 1,
-			center_x + offsetx, center_y - offsety, 1, 0, 0, 1,
-			center_x + offsetx, center_y + offsety, 1, 0, 0, 1,
-			center_x - offsetx, center_y + offsety, 1, 0, 0, 1
+			 center_x - offsetx, center_y - offsety, 1, 0, 0, 1,
+			 center_x + offsetx, center_y - offsety, 1, 0, 0, 1,
+			 center_x + offsetx, center_y + offsety, 1, 0, 0, 1,
+			 center_x - offsetx, center_y + offsety, 1, 0, 0, 1
 		};
 
 		arrcpy(temp_buffer); // store the data to class member
 		rotate_obj(degree);
 		set_data(data_buffer, 4, GL_TRIANGLE_FAN);
-
-		// Initialize velocity to zero
-		init_velocity(0, 0);
 	}
 	float get_center_x() { return center_x; }
 	float get_center_y() { return center_y; }
 	float get_width() { return width; }
 	float get_height() { return height; }
-
-	void init_velocity(float vx, float vy) {
-		this->vx = vx / HALF_WIDTH;
-		this->vy = vy / HALF_HEIGHT;
-		this->speed = sqrt(this->vx * this->vx + this->vy * this->vy);
-	}
-	void set_velocity_norm(float vx, float vy) {
-		this->vx = vx;
-		this->vy = vy;
-		this->speed = sqrt(this->vx * this->vx + this->vy * this->vy);
-	}
-	void update_position() {
-
-		// Update position using velocity
-		center_x += vx;
-		center_y += vy;
-
-		// Update data buffer based on new position
-		for (int i = 0; i < buffer_size; i += 6) {
-			data_buffer[i] += center_x;
-			data_buffer[i + 1] += center_y;
-		}
-	}
 
 private:
 
@@ -310,10 +404,6 @@ private:
 	float height = 0;
 	float rotate_degree = 0;
 	float data_buffer[24];
-	float vx = 0;
-	float vy = 0;
-	float speed = 0;
-	int buffer_size;
 
 	void arrcpy(float in[24]) { for (int i = 0; i < 24; i++) data_buffer[i] = in[i]; }
 
@@ -321,16 +411,17 @@ private:
 		degree = degree * M_PI / 180.0;
 		float cs = (float)cos(degree);
 		float sn = (float)sin(degree);
-
+		//float rotation_matrix[4] = {cs, -sn, sn, cs};
 		for (int i = 0; i < 24; i += 6) {
 			float temp_x = data_buffer[i] - center_x;
 			float temp_y = data_buffer[i + 1] - center_y;
 			data_buffer[i] = cs * temp_x * HALF_WIDTH - sn * temp_y * HALF_HEIGHT;
-			data_buffer[i + 1] = sn * temp_x * HALF_WIDTH + cs * temp_y * HALF_HEIGHT;
+			data_buffer[i + 1] = sn * temp_x * HALF_WIDTH + cs * temp_y * HALF_HEIGHT; //scaling problem
 			data_buffer[i] /= HALF_WIDTH;
 			data_buffer[i + 1] /= HALF_HEIGHT;
 			data_buffer[i] += center_x;
 			data_buffer[i + 1] += center_y;
+
 		}
 	}
 };

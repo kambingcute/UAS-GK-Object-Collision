@@ -62,7 +62,6 @@ int main(void)
 	collision_engine physics_engine;
 
 	std::vector<Polygon*> balls;
-	std::vector<Square*> rects;
 
 	Polygon b1(200, 35.355339, 50, 360);
 	b1.change_color(1, 1, 0, 1);
@@ -71,11 +70,10 @@ int main(void)
 	Polygon b2(-100, -35.355339, 50, 360);
 	b2.init_velocity(0.5, 0);
 
-	Square r1(-277, 14, 50, 100, 80); // x, y, widht, height, angle
-	r1.init_velocity(1.5, 0.5);
+	// Square r1(-277, 14, 50, 100, 80); // x, y, widht, height, angle
 
 	Triangle t1(120, 30, 50);
-
+	t1.init_velocity(0.5, 0);
 
 	physics_engine.new_object(b1);
 	physics_engine.new_object(b2);
@@ -196,10 +194,9 @@ int main(void)
 		b2.update_position();
 		b2.show();
 
-		r1.update_position();
-		r1.show();
-
+		t1.update_position();
 		t1.show();
+
 		physics_engine.collision_check();
 
 		Polygon ref(0, 0, 55.9, 360);

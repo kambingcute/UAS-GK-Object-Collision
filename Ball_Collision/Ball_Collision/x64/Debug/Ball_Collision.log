@@ -16,16 +16,23 @@ D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\B
 D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(152,82): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(154,29): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(167,29): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(182,59): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(220,82): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(221,86): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(258,19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(271,14): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(283,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(284,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(321,26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(328,46): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(329,50): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(176,59): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(214,82): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(215,86): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(243,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(244,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(265,29): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(290,1): warning C4305: '+=': truncation from 'double' to 'float'
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(301,1): warning C4305: '-=': truncation from 'double' to 'float'
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(315,18): warning C4305: 'initializing': truncation from 'double' to 'float'
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(319,84): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(320,88): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(341,60): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(378,19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(391,14): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(411,26): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(418,46): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Shape.h(419,50): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Physics_Engine.h(44,19): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Physics_Engine.h(51,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Physics_Engine.h(52,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
@@ -48,30 +55,30 @@ D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\B
 D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Physics_Engine.h(162,26): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(30,42): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(30,28): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(67,18): warning C4305: 'argument': truncation from 'double' to 'float'
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(71,20): warning C4305: 'argument': truncation from 'double' to 'float'
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(104,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(105,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(115,53): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(115,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(115,35): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(117,29): warning C4305: 'argument': truncation from 'double' to 'float'
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(118,32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(118,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(118,26): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(156,14): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(168,39): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(168,30): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(168,21): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(169,32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(169,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(169,26): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(171,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(172,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(174,42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(174,28): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(188,23): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(205,21): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(66,18): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(70,20): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(102,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(103,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(113,53): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(113,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(113,35): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(115,29): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(116,32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(116,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(116,26): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(154,14): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(166,39): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(166,30): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(166,21): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(167,32): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(167,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(167,26): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(169,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(170,13): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(172,42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(172,28): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(186,23): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(202,21): warning C4305: 'argument': truncation from 'double' to 'float'
 D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Ball_Collision\Ball_Collision.cpp(57,9): warning C4101: 'r': unreferenced local variable
 glew32s.lib(glew.obj) : warning LNK4099: PDB '' was not found with 'glew32s.lib(glew.obj)' or at ''; linking object as if no debug info
 LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
