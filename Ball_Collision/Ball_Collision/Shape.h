@@ -204,15 +204,41 @@ private:
 };
 
 
-class Traingle : public Base_Object {
+class Triangle : public Base_Object {
 
 public:
-	Traingle() {}
-	Traingle(float* data_buffer) {
-		set_data(data_buffer, 3, GL_TRIANGLES);
-	}
-private:
+	Triangle() {}
+	Triangle(float center_x, float center_y, float side_length) {
+		number_of_vertices = 3;
+		buffer_size = number_of_vertices * 6;
+		this->side_length = side_length;
 
+		float* temp_buffer = new float[buffer_size];
+
+		for (int i = 0; i < buffer_size; i += 6) {
+			// Dalam hal ini, kami akan membuat segitiga sama sisi di sekitar center_x, center_y
+			temp_buffer[i] = (center_x + side_length * cos((i / 6) * (2.0 * M_PI / 3.0))) / HALF_WIDTH;
+			temp_buffer[i + 1] = (center_y + side_length * sin((i / 6) * (2.0 * M_PI / 3.0))) / HALF_HEIGHT;
+			temp_buffer[i + 2] = 0.0;
+			temp_buffer[i + 3] = 0.0;
+			temp_buffer[i + 4] = 1.0;
+			temp_buffer[i + 5] = 1.0;
+		}
+		data_buffer = temp_buffer;
+
+		set_data(data_buffer, number_of_vertices, GL_TRIANGLE_FAN);
+	}
+
+	// Fungsi lainnya sesuai kebutuhan Anda, misalnya untuk mengubah warna atau menggerakkan segitiga.
+
+	~Triangle() { delete[] data_buffer; }
+
+private:
+	int number_of_vertices;
+	float side_length;
+
+	float* data_buffer;
+	int buffer_size;
 };
 
 class Square : public Base_Object {
@@ -226,6 +252,8 @@ public:
 		height /= float(WINDOW_HEIGHT / 2);
 		this->center_x = center_x;
 		this->center_y = center_y;
+		this->width = width;
+		this->height = height;
 
 		rotate_degree = degree;
 
@@ -233,20 +261,46 @@ public:
 		float offsetx = width / 2;
 
 		float temp_buffer[24] = {
-			 center_x - offsetx, center_y - offsety, 1, 0, 0, 1,
-			 center_x + offsetx, center_y - offsety, 1, 0, 0, 1,
-			 center_x + offsetx, center_y + offsety, 1, 0, 0, 1,
-			 center_x - offsetx, center_y + offsety, 1, 0, 0, 1
+			center_x - offsetx, center_y - offsety, 1, 0, 0, 1,
+			center_x + offsetx, center_y - offsety, 1, 0, 0, 1,
+			center_x + offsetx, center_y + offsety, 1, 0, 0, 1,
+			center_x - offsetx, center_y + offsety, 1, 0, 0, 1
 		};
-		 
+
 		arrcpy(temp_buffer); // store the data to class member
 		rotate_obj(degree);
 		set_data(data_buffer, 4, GL_TRIANGLE_FAN);
+
+		// Initialize velocity to zero
+		init_velocity(0, 0);
 	}
 	float get_center_x() { return center_x; }
 	float get_center_y() { return center_y; }
 	float get_width() { return width; }
 	float get_height() { return height; }
+
+	void init_velocity(float vx, float vy) {
+		this->vx = vx / HALF_WIDTH;
+		this->vy = vy / HALF_HEIGHT;
+		this->speed = sqrt(this->vx * this->vx + this->vy * this->vy);
+	}
+	void set_velocity_norm(float vx, float vy) {
+		this->vx = vx;
+		this->vy = vy;
+		this->speed = sqrt(this->vx * this->vx + this->vy * this->vy);
+	}
+	void update_position() {
+
+		// Update position using velocity
+		center_x += vx;
+		center_y += vy;
+
+		// Update data buffer based on new position
+		for (int i = 0; i < buffer_size; i += 6) {
+			data_buffer[i] += center_x;
+			data_buffer[i + 1] += center_y;
+		}
+	}
 
 private:
 
@@ -256,6 +310,10 @@ private:
 	float height = 0;
 	float rotate_degree = 0;
 	float data_buffer[24];
+	float vx = 0;
+	float vy = 0;
+	float speed = 0;
+	int buffer_size;
 
 	void arrcpy(float in[24]) { for (int i = 0; i < 24; i++) data_buffer[i] = in[i]; }
 
@@ -263,17 +321,16 @@ private:
 		degree = degree * M_PI / 180.0;
 		float cs = (float)cos(degree);
 		float sn = (float)sin(degree);
-		//float rotation_matrix[4] = {cs, -sn, sn, cs};
+
 		for (int i = 0; i < 24; i += 6) {
-			float temp_x = data_buffer[i] - center_x ;
-			float temp_y = data_buffer[i + 1] - center_y ;
-			data_buffer[i]     = cs * temp_x * HALF_WIDTH - sn * temp_y * HALF_HEIGHT;
-			data_buffer[i + 1] = sn * temp_x * HALF_WIDTH + cs * temp_y * HALF_HEIGHT; //scaling problem
+			float temp_x = data_buffer[i] - center_x;
+			float temp_y = data_buffer[i + 1] - center_y;
+			data_buffer[i] = cs * temp_x * HALF_WIDTH - sn * temp_y * HALF_HEIGHT;
+			data_buffer[i + 1] = sn * temp_x * HALF_WIDTH + cs * temp_y * HALF_HEIGHT;
 			data_buffer[i] /= HALF_WIDTH;
-			data_buffer[i+1] /= HALF_HEIGHT;
+			data_buffer[i + 1] /= HALF_HEIGHT;
 			data_buffer[i] += center_x;
 			data_buffer[i + 1] += center_y;
-
 		}
 	}
 };

@@ -120,18 +120,6 @@ public:
 					round_object_ptr[i / 3]->set_velocity_norm(obj1_vx_remain + obj2_vx_exchange, obj1_vy_remain + obj2_vy_exchange);
 					round_object_ptr[j / 3]->set_velocity_norm(obj2_vx_remain + obj1_vx_exchange, obj2_vy_remain + obj1_vy_exchange);
 
-					// old two object speed change
-					/*
-					float tempvx1 = round_object_ptr[i / 3]->get_vx();
-					float tempvy1 = round_object_ptr[i / 3]->get_vy();
-					float tempvx2 = round_object_ptr[j / 3]->get_vx();
-					float tempvy2 = round_object_ptr[j / 3]->get_vy();
-
-					cout << tempvx1 << " " << tempvy2 << endl;
-					round_object_ptr[i / 3]->set_velocity_norm(tempvx2, tempvy2);
-					round_object_ptr[j / 3]->set_velocity_norm(tempvx1, tempvy1);
-					*/
-
 					//anti-stick 
 					if (round_object_data[i] - round_object_data[j] < 0) {
 						round_object_ptr[i / 3]->move_norm(-0.01, 0);

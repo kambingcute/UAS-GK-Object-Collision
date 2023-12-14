@@ -62,6 +62,7 @@ int main(void)
 	collision_engine physics_engine;
 
 	std::vector<Polygon*> balls;
+	std::vector<Square*> rects;
 
 	Polygon b1(200, 35.355339, 50, 360);
 	b1.change_color(1, 1, 0, 1);
@@ -69,6 +70,12 @@ int main(void)
 
 	Polygon b2(-100, -35.355339, 50, 360);
 	b2.init_velocity(0.5, 0);
+
+	Square r1(-277, 14, 50, 100, 80); // x, y, widht, height, angle
+	r1.init_velocity(1.5, 0.5);
+
+	Triangle t1(120, 30, 50);
+
 
 	physics_engine.new_object(b1);
 	physics_engine.new_object(b2);
@@ -86,12 +93,13 @@ int main(void)
 		cypos -= HALF_HEIGHT;
 		cypos = -cypos;
 
-		int state = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
+		int state1 = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
+		int state2 = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT);
 
 		double r = rand() / float(RAND_MAX + 1);
 
 		/* Release Mouse And Create New Object */
-		if (object_created == true && state == GLFW_RELEASE) {
+		if (object_created == true && state1 == GLFW_RELEASE) {
 
 			float dx = cxpos - cxpos_o;
 			float dy = cypos - cypos_o;
@@ -116,8 +124,35 @@ int main(void)
 			object_created = false;
 		}
 
+		/*
+		if (object_created == true && state2 == GLFW_RELEASE) {
+
+			float dx = cxpos - cxpos_o;
+			float dy = cypos - cypos_o;
+
+			if (dx > 100) dx = 100;
+			if (dx < -100) dx = -100;
+			if (dy > 100) dy = 100;
+			if (dy < -100) dy = -100;
+
+			dx /= 20;
+			dy /= 20;
+
+			Square* newrect = new Square(cxpos_o, cypos_o, new_rect_size, 360);
+			newrect->init_velocity(-dx, -dy);
+			newrect->set_acclr_norm(-0.01);
+			newrect->change_color(r, g, b, 1);
+			rects.push_back(newrect);
+
+			physics_engine.new_object(*newrect);
+
+			new_rect_size = 20;
+			object_created = false;
+		}
+		*/
+
 		/* Click to choose Circle */
-		if (state == GLFW_PRESS) {
+		if (state1 == GLFW_PRESS) {
 			srand(time(NULL));
 			if (object_created == false) {
 				cxpos_o = cxpos;
@@ -161,13 +196,17 @@ int main(void)
 		b2.update_position();
 		b2.show();
 
+		r1.update_position();
+		r1.show();
+
+		t1.show();
 		physics_engine.collision_check();
 
 		Polygon ref(0, 0, 55.9, 360);
 		Square temp_square_2(-277, 14, 50, 100, 80);
 		
-		//ref.show();
-		//temp_square_2.show();
+		// ref.show();
+		// temp_square_2.show();
 
 		/* Swap front and back buffers */
 		glfwSwapBuffers(window);
