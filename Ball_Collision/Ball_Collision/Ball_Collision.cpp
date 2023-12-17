@@ -10,7 +10,6 @@
 #include "Shape.h"
 #include "Window_Setting.h"
 #include "Window_Setting.h"
-#include "Physics_Engine.h"
 #include "pch.h"
 
 /* Function Declaration */
@@ -59,24 +58,23 @@ int main(void)
 	double ball_increace_rate = 0.7;
 	bool object_created = false;
 
-	collision_engine physics_engine;
-
 	std::vector<Polygon*> balls;
 
 	Polygon b1(200, 35.355339, 50, 360);
 	b1.change_color(1, 1, 0, 1);
-	b1.init_velocity(-0.5, 0);
+	b1.init_velocity(-1, 0);
 
 	Polygon b2(-100, -35.355339, 50, 360);
-	b2.init_velocity(0.5, 0);
+	b2.init_velocity(1, 0);
 
 	// Square r1(-277, 14, 50, 100, 80); // x, y, widht, height, angle
 
 	Triangle t1(120, 30, 50);
 	t1.init_velocity(0.5, 0);
 
-	physics_engine.new_object(b1);
-	physics_engine.new_object(b2);
+	Triangle t2(-120, 100, 80);
+	t1.change_color(1, 1, 0, 1);
+	t2.init_velocity(-0.5, 0);
 
 
 	/* Loop until the user closes the window */
@@ -102,10 +100,6 @@ int main(void)
 			float dx = cxpos - cxpos_o;
 			float dy = cypos - cypos_o;
 
-			if (dx > 100) dx = 100;
-			if (dx < -100) dx = -100;
-			if (dy > 100) dy = 100;
-			if (dy < -100) dy = -100;
 
 			dx /= 20;
 			dy /= 20;
@@ -116,38 +110,10 @@ int main(void)
 			newball->change_color(r, g, b, 1);
 			balls.push_back(newball);
 
-			physics_engine.new_object(*newball);
-
 			new_ball_size = 20;
 			object_created = false;
 		}
 
-		/*
-		if (object_created == true && state2 == GLFW_RELEASE) {
-
-			float dx = cxpos - cxpos_o;
-			float dy = cypos - cypos_o;
-
-			if (dx > 100) dx = 100;
-			if (dx < -100) dx = -100;
-			if (dy > 100) dy = 100;
-			if (dy < -100) dy = -100;
-
-			dx /= 20;
-			dy /= 20;
-
-			Square* newrect = new Square(cxpos_o, cypos_o, new_rect_size, 360);
-			newrect->init_velocity(-dx, -dy);
-			newrect->set_acclr_norm(-0.01);
-			newrect->change_color(r, g, b, 1);
-			rects.push_back(newrect);
-
-			physics_engine.new_object(*newrect);
-
-			new_rect_size = 20;
-			object_created = false;
-		}
-		*/
 
 		/* Click to choose Circle */
 		if (state1 == GLFW_PRESS) {
@@ -196,8 +162,8 @@ int main(void)
 
 		t1.update_position();
 		t1.show();
-
-		physics_engine.collision_check();
+		t2.update_position();
+		t2.show();
 
 		Polygon ref(0, 0, 55.9, 360);
 		Square temp_square_2(-277, 14, 50, 100, 80);
