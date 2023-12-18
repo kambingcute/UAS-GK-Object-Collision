@@ -79,36 +79,21 @@ public:
 		set_data(data_buffer, number_of_vertices, GL_TRIANGLE_FAN);
 	}
 
-	void change_color(float r, float g, float b, float aph) {
+	void change_color(float r, float g, float b) {
 		buffer_size = number_of_vertices * 6;
 		for (int i = 0; i < buffer_size; i += 6) {
 			data_buffer[i + 2] = r;
 			data_buffer[i + 3] = g;
 			data_buffer[i + 4] = b;
-			data_buffer[i + 5] = aph;
 		}
 		
 	}
-	void move_norm(float dx, float dy) {
-	
-		for (int i = 0; i < buffer_size; i += 6) {
-			data_buffer[i] += dx;
-			data_buffer[i + 1] += dy;
-		}
-		center_x = data_buffer[0] - radii / HALF_WIDTH;
-		center_y = data_buffer[1];
-	}
-
 	void init_velocity(float vx, float vy) {
 		this->vx = vx / HALF_WIDTH;
 		this->vy = vy / HALF_WIDTH;
 		this->speed = sqrt(this->vx * this->vx + this->vy * this->vy);
 	}
-	void set_velocity_norm(float vx, float vy) {
-		this->vx = vx;
-		this->vy = vy;
-		this->speed = sqrt(this->vx * this->vx + this->vy * this->vy);
-	}
+
 	bool edge_collided_x() {
 		bool if_edge_collided;
 		float radiix = radii / HALF_WIDTH;
@@ -164,13 +149,22 @@ public:
 			data_buffer[i] += vx;
 			data_buffer[i + 1] += vy;
 
-			if (data_buffer[i] >= 0 and data_buffer[i] < 1) {
-				float random_r = (rand() * 1.0f) / RAND_MAX;
-				float random_g = (rand() * 1.0f) / RAND_MAX;
-				float random_b = (rand() * 1.0f) / RAND_MAX;
-				float random_aph = (rand() * 1.0f) / RAND_MAX;
+			if (!colorChanged) {
+				if (data_buffer[i] >= 0) {
+					float random_r = (rand() * 1.0f) / RAND_MAX;
+					float random_g = (rand() * 1.0f) / RAND_MAX;
+					float random_b = (rand() * 1.0f) / RAND_MAX;
+					float random_aph = (rand() * 1.0f) / RAND_MAX;
 
-				change_color(random_r, random_g, random_b, random_aph);
+					change_color(random_r, random_g, random_b);
+					colorChanged = true;
+				}
+			}
+			else {
+				if (data_buffer[i] < 0) {
+					change_color(1.0, 1.0, 1.0);
+					colorChanged = false;
+				}
 			}
 		}
 		center_x = data_buffer[0] - radii / HALF_WIDTH;
@@ -203,6 +197,7 @@ private:
 
 	float *data_buffer;
 	int buffer_size;
+	bool colorChanged = false;
 };
 
 
@@ -230,13 +225,12 @@ public:
 
 		set_data(data_buffer, number_of_vertices, GL_TRIANGLE_FAN);
 	}
-	void change_color(float r, float g, float b, float aph) {
+	void change_color(float r, float g, float b) {
 		buffer_size = number_of_vertices * 6;
 		for (int i = 0; i < buffer_size; i += 6) {
 			data_buffer[i + 2] = r;
 			data_buffer[i + 3] = g;
 			data_buffer[i + 4] = b;
-			data_buffer[i + 5] = aph;
 		}
 	}
 	void init_velocity(float vx, float vy) {
@@ -245,6 +239,37 @@ public:
 		this->speed = sqrt(this->vx * this->vx + this->vy * this->vy);
 	}
 
+	bool edge_collided_x() {
+		bool if_edge_collided = false;
+
+		float radiix = side_length / HALF_WIDTH;
+
+		for (int i = 0; i < buffer_size; i += 6) {
+			if (data_buffer[i] + radiix >= 1.0 || data_buffer[i] - radiix <= -1.0) {
+				vx = -vx;
+				if_edge_collided = true;
+				break;
+			}
+		}
+
+		return if_edge_collided;
+	}
+
+	bool edge_collided_y() {
+		bool if_edge_collided = false;
+
+		float radiiy = side_length / HALF_HEIGHT;
+
+		for (int i = 0; i < buffer_size; i += 6) {
+			if (data_buffer[i + 1] + radiiy >= 1.0 || data_buffer[i + 1] - radiiy <= -1.0) {
+				vy = -vy;
+				if_edge_collided = true;
+				break;
+			}
+		}
+
+		return if_edge_collided;
+	}
 	void update_position() {
 		for (int i = 0; i < buffer_size; i += 6) {
 			data_buffer[i] += vx;
@@ -260,14 +285,26 @@ public:
 				vx = -vx;
 			}
 			
-			if (data_buffer[i] >= 0 and data_buffer[i] < 1) {
-				float random_r = (rand() * 1.0f) / RAND_MAX;
-				float random_g = (rand() * 1.0f) / RAND_MAX;
-				float random_b = (rand() * 1.0f) / RAND_MAX;
-				float random_aph = (rand() * 1.0f) / RAND_MAX;
+			if (!colorChanged) {
+				if (data_buffer[i] >= 0) {
+					float random_r = (rand() * 1.0f) / RAND_MAX;
+					float random_g = (rand() * 1.0f) / RAND_MAX;
+					float random_b = (rand() * 1.0f) / RAND_MAX;
+					float random_aph = (rand() * 1.0f) / RAND_MAX;
 
-				change_color(random_r, random_g, random_b, random_aph);
+					change_color(random_r, random_g, random_b);
+					colorChanged = true;
+				}
 			}
+			else {
+				if (data_buffer[i] < 0) {
+					change_color(1.0, 1.0, 1.0);
+					colorChanged = false;
+				}
+			}
+
+			edge_collided_x();
+			edge_collided_y();
 		}
 	}
 
@@ -293,6 +330,8 @@ private:
 	float vy = 0;
 	float speed = 0;
 	float acclr = 0;
+
+	bool colorChanged = false;
 };
 
 class Square : public Base_Object {
@@ -357,4 +396,3 @@ private:
 		}
 	}
 };
-

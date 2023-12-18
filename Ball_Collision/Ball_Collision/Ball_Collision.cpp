@@ -16,6 +16,15 @@
 static unsigned int CompileShader(unsigned int type, const std::string& source);
 static unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
 
+void drawVerticalLine() {
+	glLineWidth(3.0); // Mengatur ketebalan garis
+
+	glBegin(GL_LINES);
+	glColor3ub(255, 255, 255); // Mengatur warna garis menjadi putih
+	glVertex2d(0.0, -HALF_HEIGHT);  // starting point
+	glVertex2d(0.0, HALF_HEIGHT);   // ending point
+	glEnd();
+}
 
 int main(void)
 {
@@ -57,15 +66,17 @@ int main(void)
 	double new_ball_size = 20;
 	double ball_increace_rate = 0.7;
 	bool object_created = false;
+	bool triangle_created = false;
 
 	std::vector<Polygon*> balls;
+	std::vector<Triangle*> triangles;
 
 	Polygon b1(200, 35.355339, 50, 360);
-	b1.change_color(1, 1, 0, 1);
-	b1.init_velocity(-1, 0);
+	b1.change_color(1, 1, 0);
+	b1.init_velocity(-0.5, 0);
 
-	Polygon b2(-100, -35.355339, 50, 360);
-	b2.init_velocity(1, 0);
+	Polygon b2(-100, -35.355339, 100, 360);
+	b2.init_velocity(0.5, 0);
 
 	// Square r1(-277, 14, 50, 100, 80); // x, y, widht, height, angle
 
@@ -73,7 +84,7 @@ int main(void)
 	t1.init_velocity(0.5, 0);
 
 	Triangle t2(-120, 100, 80);
-	t1.change_color(1, 1, 0, 1);
+	t1.change_color(1, 1, 0);
 	t2.init_velocity(-0.5, 0);
 
 
@@ -81,6 +92,7 @@ int main(void)
 	while (!glfwWindowShouldClose(window))
 	{
 		/* Render here */
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Hitam sebagai latar belakang
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glfwGetCursorPos(window, &cxpos, &cypos);
@@ -92,7 +104,7 @@ int main(void)
 		int state1 = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT);
 		int state2 = glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT);
 
-		double r = rand() / float(RAND_MAX + 1);
+
 
 		/* Release Mouse And Create New Object */
 		if (object_created == true && state1 == GLFW_RELEASE) {
@@ -107,7 +119,7 @@ int main(void)
 			Polygon* newball = new Polygon(cxpos_o, cypos_o, new_ball_size, 360);
 			newball->init_velocity(-dx, -dy);
 			newball->set_acclr_norm(-0.01);
-			newball->change_color(r, g, b, 1);
+			newball->change_color(r, g, b);
 			balls.push_back(newball);
 
 			new_ball_size = 20;
@@ -130,13 +142,13 @@ int main(void)
 			cout << cxpos << " " << cypos << endl;
 
 			Polygon tempball(cxpos_o, cypos_o, new_ball_size, 360);
-			tempball.change_color(r, g, b, 1);
+			tempball.change_color(r, g, b);
 
 			float dx = cxpos - cxpos_o;
 			float dy = cypos - cypos_o;
 
 			Polygon aimball(cxpos_o - dx, cypos_o - dy, 3, 360);
-			aimball.change_color(1, 0, 0, 1);
+			aimball.change_color(1, 0, 0);
 
 
 			new_ball_size += ball_increace_rate;
@@ -148,12 +160,14 @@ int main(void)
 
 		}
 
+
 		// update all balls
 		int number_of_balls = balls.size();
 		for (int i = 0; i < number_of_balls; i++) {
 			balls[i]->update_position();
 			balls[i]->show();
 		}
+
 
 		b1.update_position();
 		b1.show();
@@ -162,6 +176,7 @@ int main(void)
 
 		t1.update_position();
 		t1.show();
+
 		t2.update_position();
 		t2.show();
 
