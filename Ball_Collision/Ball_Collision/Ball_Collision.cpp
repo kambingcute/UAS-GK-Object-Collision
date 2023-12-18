@@ -83,9 +83,9 @@ int main(void)
 	Triangle t1(120, 30, 50);
 	t1.init_velocity(0.5, 0);
 
-	Triangle t2(-120, 100, 80);
+	Triangle t2(-120, 160, 80);
 	t1.change_color(1, 1, 0);
-	t2.init_velocity(-0.5, 0);
+	t2.init_velocity(-0.5, 0.5);
 
 
 	/* Loop until the user closes the window */
