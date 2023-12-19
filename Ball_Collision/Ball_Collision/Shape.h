@@ -362,9 +362,21 @@ public:
 			 center_x - offsetx, center_y + offsety, 1, 0, 0, 1
 		};
 
+
+
 		arrcpy(temp_buffer); // store the data to class member
 		rotate_obj(degree);
 		set_data(data_buffer, 4, GL_TRIANGLE_FAN);
+
+	}
+
+	void set_color(float r, float g, float b, float alpha = 1.0f) {
+		for (int i = 2; i < 24; i += 6) {
+			data_buffer[i] = r;
+			data_buffer[i + 1] = g;
+			data_buffer[i + 2] = b;
+			data_buffer[i + 3] = alpha;
+		}
 	}
 
 	float get_center_x() { return center_x; }

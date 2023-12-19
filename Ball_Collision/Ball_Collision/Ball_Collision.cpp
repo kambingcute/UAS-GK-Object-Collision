@@ -85,10 +85,11 @@ int main(void)
 	{
 		/* Render here */
 
-		glClearColor(0.7f, 0.7f, 1.0f, 1.0f); // background color
+		glClearColor(0.792, 0.714, 0.620, 1.0f); // background color
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		Square temp_square_2(0, 0, 6, 800, 00);
+		Square temp_square_2(250, 0, 500, 800, 0);
+		temp_square_2.set_color(0.580f, 0.788f, 0.451f);
 		temp_square_2.show();
 
 		glfwGetCursorPos(window, &cxpos, &cypos);
