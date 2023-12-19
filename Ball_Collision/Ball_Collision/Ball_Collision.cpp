@@ -16,16 +16,6 @@
 static unsigned int CompileShader(unsigned int type, const std::string& source);
 static unsigned int CreateShader(const std::string& vertexShader, const std::string& fragmentShader);
 
-void drawVerticalLine() {
-	glLineWidth(3.0); // Mengatur ketebalan garis
-
-	glBegin(GL_LINES);
-	glColor3ub(255, 255, 255); // Mengatur warna garis menjadi putih
-	glVertex2d(0.0, -HALF_HEIGHT);  // starting point
-	glVertex2d(0.0, HALF_HEIGHT);   // ending point
-	glEnd();
-}
-
 int main(void)
 {
 	GLFWwindow* window;
@@ -71,29 +61,31 @@ int main(void)
 	std::vector<Polygon*> balls;
 	std::vector<Triangle*> triangles;
 
+
 	Polygon b1(200, 35.355339, 50, 360);
-	b1.change_color(1, 1, 0);
-	b1.init_velocity(-0.5, 0);
+	b1.init_velocity(0.5, 0.5);
 
 	Polygon b2(-100, -35.355339, 100, 360);
-	b2.init_velocity(0.5, 0);
+	b2.init_velocity(0.5, 0.5);
 
 	// Square r1(-277, 14, 50, 100, 80); // x, y, widht, height, angle
 
 	Triangle t1(120, 30, 50);
-	t1.init_velocity(0.5, 0);
+	t1.init_velocity(-0.5, 0);
 
 	Triangle t2(-120, 160, 80);
-	t1.change_color(1, 1, 0);
-	t2.init_velocity(-0.5, 0.5);
+	t2.init_velocity(0.5, 0.5);
 
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
 	{
 		/* Render here */
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // Hitam sebagai latar belakang
+
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		Square temp_square_2(0, 0, 6, 800, 00);
+		temp_square_2.show();
 
 		glfwGetCursorPos(window, &cxpos, &cypos);
 
@@ -160,7 +152,6 @@ int main(void)
 
 		}
 
-
 		// update all balls
 		int number_of_balls = balls.size();
 		for (int i = 0; i < number_of_balls; i++) {
@@ -180,11 +171,6 @@ int main(void)
 		t2.update_position();
 		t2.show();
 
-		Polygon ref(0, 0, 55.9, 360);
-		Square temp_square_2(-277, 14, 50, 100, 80);
-		
-		// ref.show();
-		// temp_square_2.show();
 
 		/* Swap front and back buffers */
 		glfwSwapBuffers(window);

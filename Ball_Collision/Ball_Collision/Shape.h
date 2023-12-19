@@ -146,11 +146,12 @@ public:
 	void update_position() {
 
 		for (int i = 0; i < buffer_size; i += 6) {
-			data_buffer[i] += vx;
-			data_buffer[i + 1] += vy;
+			data_buffer[i] += vx / 2;
+			data_buffer[i + 1] += vy / 2;
+
 
 			if (!colorChanged) {
-				if (data_buffer[i] >= 0) {
+				if (data_buffer[i] < 0) {
 					float random_r = (rand() * 1.0f) / RAND_MAX;
 					float random_g = (rand() * 1.0f) / RAND_MAX;
 					float random_b = (rand() * 1.0f) / RAND_MAX;
@@ -161,12 +162,13 @@ public:
 				}
 			}
 			else {
-				if (data_buffer[i] < 0) {
+				if (data_buffer[i] >= 0) {
 					change_color(1.0, 1.0, 1.0);
 					colorChanged = false;
 				}
 			}
 		}
+
 		center_x = data_buffer[0] - radii / HALF_WIDTH;
 		center_y = data_buffer[1];
 
@@ -255,10 +257,11 @@ public:
 		return if_edge_collided;
 	}
 
+
 	bool edge_collided_y() {
 		bool if_edge_collided = false;
 
-		float radiiy = side_length / HALF_HEIGHT;
+		float radiiy = side_length / (HALF_HEIGHT * 2);
 
 		for (int i = 0; i < buffer_size; i += 6) {
 			if (data_buffer[i + 1] + radiiy >= 1.0 || data_buffer[i + 1] - radiiy <= -1.0) {
@@ -272,9 +275,10 @@ public:
 	}
 	void update_position() {
 		for (int i = 0; i < buffer_size; i += 6) {
-			data_buffer[i] += vx;
-			data_buffer[i + 1] += vy;
+			data_buffer[i] += vx / 2;
+			data_buffer[i + 1] += vy / 2;
 
+			
 			// Bounce at x=1 and x=-1
 			if (data_buffer[i] > 1.0) {
 				data_buffer[i] = 1.0;
@@ -284,6 +288,7 @@ public:
 				data_buffer[i] = -1.0;
 				vx = -vx;
 			}
+			
 			
 			if (!colorChanged) {
 				if (data_buffer[i] >= 0) {
@@ -303,7 +308,6 @@ public:
 				}
 			}
 
-			edge_collided_x();
 			edge_collided_y();
 		}
 	}
@@ -362,6 +366,7 @@ public:
 		rotate_obj(degree);
 		set_data(data_buffer, 4, GL_TRIANGLE_FAN);
 	}
+
 	float get_center_x() { return center_x; }
 	float get_center_y() { return center_y; }
 	float get_width() { return width; }
