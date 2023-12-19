@@ -45,6 +45,7 @@ int main(void)
 	glUseProgram(shader);
 
 
+
 	unsigned int buffer;
 	glGenBuffers(1, &buffer); // generate 1 buffer 
 							  // memory error if you don't have glewInit()
@@ -84,6 +85,7 @@ int main(void)
 	{
 		/* Render here */
 
+		glClearColor(0.7f, 0.7f, 1.0f, 1.0f); // background color
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		Square temp_square_2(0, 0, 6, 800, 00);
