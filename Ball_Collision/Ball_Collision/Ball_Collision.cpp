@@ -25,7 +25,7 @@ int main(void)
 		return -1;
 
 	/* Create a windowed mode window and its OpenGL context */
-	window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "Collision", NULL, NULL);
+	window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "UAS GK Pinkie Pie", NULL, NULL);
 	if (!window)
 	{
 		glfwTerminate();
@@ -55,6 +55,8 @@ int main(void)
 	double r, g, b;
 	double new_ball_size = 20;
 	double ball_increace_rate = 0.7;
+	double new_triangle_size = 50;
+	double triangle_increace_rate = 0.7;
 	bool object_created = false;
 	bool triangle_created = false;
 
@@ -104,9 +106,10 @@ int main(void)
 			float dx = cxpos - cxpos_o;
 			float dy = cypos - cypos_o;
 
-
 			dx /= 20;
 			dy /= 20;
+
+			cout << dx << " " << dy << endl;
 
 			Polygon* newball = new Polygon(cxpos_o, cypos_o, new_ball_size, 360);
 			newball->init_velocity(-dx, -dy);
@@ -116,6 +119,24 @@ int main(void)
 
 			new_ball_size = 20;
 			object_created = false;
+		}
+
+		else if (triangle_created == true && state2 == GLFW_RELEASE) {
+
+			float dx = cxpos - (cxpos_o / 4);
+			float dy = cypos - (cypos_o / 4);
+
+			dx /= 200;
+			dy /= 200;
+
+			cout << dx << " " << dy << endl;
+			Triangle* newtriangle = new Triangle(cxpos_o, cypos_o, new_triangle_size);
+			newtriangle->init_velocity(-dx, -dy);
+			newtriangle->change_color(r, g, b);
+			triangles.push_back(newtriangle);
+
+			new_triangle_size = 50;
+			triangle_created = false;
 		}
 
 
@@ -131,7 +152,7 @@ int main(void)
 				b = rand() / float(RAND_MAX + 1);
 				object_created = true;
 			}
-			cout << cxpos << " " << cypos << endl;
+			// cout << cxpos << " " << cypos << endl;
 
 			Polygon tempball(cxpos_o, cypos_o, new_ball_size, 360);
 			tempball.change_color(r, g, b);
@@ -152,11 +173,47 @@ int main(void)
 
 		}
 
+		else if (state2 == GLFW_PRESS) {
+			srand(time(NULL));
+			if (object_created == false) {
+				cxpos_o = cxpos;
+				cypos_o = cypos;
+
+				r = rand() / float(RAND_MAX + 1);
+				g = rand() / float(RAND_MAX + 1);
+				b = rand() / float(RAND_MAX + 1);
+				triangle_created = true;
+			}
+			// cout << cxpos << " " << cypos << endl;
+
+			Triangle temptriangle(cxpos_o, cypos_o, new_triangle_size);
+			temptriangle.change_color(r, g, b);
+
+			float dx = cxpos - cxpos_o;
+			float dy = cypos - cypos_o;
+
+			Triangle aimtriangle(cxpos_o - dx, cypos_o - dy, 3);
+			aimtriangle.change_color(1, 1, 1);
+
+			new_triangle_size += triangle_increace_rate;
+			if (new_triangle_size > 100) triangle_increace_rate = -triangle_increace_rate;
+			if (new_triangle_size < 20) triangle_increace_rate = -triangle_increace_rate;
+
+			temptriangle.show();
+			aimtriangle.show();
+		}
+
 		// update all balls
 		int number_of_balls = balls.size();
 		for (int i = 0; i < number_of_balls; i++) {
 			balls[i]->update_position();
 			balls[i]->show();
+		}
+
+		int number_of_triangles = triangles.size();
+		for (int i = 0; i < number_of_triangles; i++) {
+			triangles[i]->update_position();
+			triangles[i]->show();
 		}
 
 
