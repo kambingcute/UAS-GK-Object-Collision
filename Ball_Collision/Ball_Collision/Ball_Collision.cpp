@@ -196,8 +196,8 @@ int main(void)
 			aimtriangle.change_color(1, 1, 1);
 
 			new_triangle_size += triangle_increace_rate;
-			if (new_triangle_size > 100) triangle_increace_rate = -triangle_increace_rate;
-			if (new_triangle_size < 20) triangle_increace_rate = -triangle_increace_rate;
+			if (new_triangle_size > 120) triangle_increace_rate = -triangle_increace_rate;
+			if (new_triangle_size < 50) triangle_increace_rate = -triangle_increace_rate;
 
 			temptriangle.show();
 			aimtriangle.show();
