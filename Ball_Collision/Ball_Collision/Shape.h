@@ -58,12 +58,12 @@ public:
 	Polygon() {}
 	Polygon(float center_x, float center_y, float radii, int number_of_side) {
 
-		number_of_vertices = number_of_side + 2;
+		number_of_vertices = number_of_side;
 		buffer_size = number_of_vertices * 6;
 		this->radii = radii;
 
 		float doublePI = (float)M_PI * 2;
-		float *temp_buffer = new float[buffer_size];
+		float *temp_buffer = new float[buffer_size]; // alokasi memori
 
 		for (int i = 0; i < buffer_size; i += 6) {
 
@@ -131,7 +131,7 @@ public:
 		x *= HALF_WIDTH;
 		y *= HALF_HEIGHT;
 		float doublePI = M_PI * 2;
-		int number_of_side = number_of_vertices - 2;
+		int number_of_side = number_of_vertices;
 		for (int i = 0; i < buffer_size; i += 6) {
 			data_buffer[i] = (x + radii * cos((i / 6) * (doublePI / number_of_side))) / HALF_WIDTH;
 			data_buffer[i + 1] = (y + radii * sin((i / 6) * (doublePI / number_of_side))) / HALF_HEIGHT;
@@ -307,7 +307,6 @@ public:
 					colorChanged = false;
 				}
 			}
-
 			edge_collided_y();
 		}
 	}

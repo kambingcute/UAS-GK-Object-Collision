@@ -6,3 +6,4 @@
 
 #define HALF_HEIGHT 400.0
 #define HALF_WIDTH 500.0
+

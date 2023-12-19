@@ -91,6 +91,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Dependencies\GLFW\include;D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Dependencies\GLEW\include;$(IncludePath)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -109,6 +110,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Dependencies\GLFW\include;D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Dependencies\GLEW\include;$(IncludePath)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,6 +129,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Dependencies\GLFW\include;D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Dependencies\GLEW\include;$(IncludePath)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,6 +148,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Dependencies\GLFW\include;D:\kuliah\sem 5\grafika komputer\github\UAS-GK-Object-Collision\Ball_Collision\Dependencies\GLEW\include;$(IncludePath)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
