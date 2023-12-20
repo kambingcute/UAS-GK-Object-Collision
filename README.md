@@ -9,5 +9,3 @@ Membuat aplikasi GLFW dan GLEW yang menggambar lebih dari 5 buah objek atau lebi
 | ------------------------------ | ---------------- | 
 | Sammytha Br Siagian            |                  |
 | Agatha Alexia Sinaga           |                  |
-| Tabar Karina Maha              |                  |
-| Carlis Belvin                  |                  |
